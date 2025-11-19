@@ -1,35 +1,46 @@
 const container = document.getElementById("shapesContainer");
 
-// Neçə shape yaratmaq istəyirsənsə
-const SHAPE_COUNT = 12;
-
-// Gradient rənglər
-const gradients = [
-  "bg-gradient-to-r from-pink-500 to-red-500",
-  "bg-gradient-to-r from-blue-500 to-indigo-500",
-  "bg-gradient-to-r from-green-400 to-emerald-500",
-  "bg-gradient-to-r from-yellow-400 to-orange-500",
-  "bg-gradient-to-r from-purple-400 to-fuchsia-500",
+const positions = [
+  { x: 10, y: 20, size: 80 },
+  { x: 30, y: 10, size: 70 },
+  { x: 80, y: 40, size: 90 },
+  { x: 70, y: 25, size: 60 },
+  { x: 20, y: 60, size: 100 },
+  { x: 40, y: 75, size: 50 },
+  { x: 60, y: 79, size: 85 },
+  { x: 80, y: 65, size: 70 },
+  { x: 12, y: 80, size: 60 },
+  { x: 55, y: 20, size: 95 },
+  { x: 85, y: 20, size: 55 },
 ];
 
-for (let i = 0; i < SHAPE_COUNT; i++) {
-  const shape = document.createElement("div");
-  shape.className = `shape ${gradients[Math.floor(Math.random() * gradients.length)]}`;
+const logos = [
+  "https://cdn.simpleicons.org/facebook",
+  "https://cdn.simpleicons.org/google",
+  "https://cdn.simpleicons.org/apple",
+  "https://cdn.simpleicons.org/netflix",
+  "https://cdn.simpleicons.org/github",
+  "https://cdn.simpleicons.org/spotify",
+  "https://cdn.simpleicons.org/airbnb",
+  "https://cdn.simpleicons.org/trello",
+  "https://cdn.simpleicons.org/docker",
+  "https://cdn.simpleicons.org/intel",
+  "https://cdn.simpleicons.org/tesla",
+  "https://cdn.simpleicons.org/twitter",
+  "https://cdn.simpleicons.org/linkedin",
+  "https://cdn.simpleicons.org/figma",
+  "https://cdn.simpleicons.org/behance",
+];
 
-  // Random position
-  const x = Math.random() * 100; // %
-  const y = Math.random() * 100; // %
+positions.forEach((pos, i) => {
+  const shape = document.createElement("img");
+  shape.src = logos[i];
+  shape.className = "shape";
 
-  shape.style.left = `${x}%`;
-  shape.style.top = `${y}%`;
-
-  // Random size
-  const size = Math.floor(Math.random() * 60) + 50; // 50–110px
-  shape.style.width = `${size}px`;
-  shape.style.height = `${size}px`;
-
-  // Random animation delay
-  shape.style.animationDelay = `${Math.random() * 4}s`;
+  shape.style.left = `${pos.x}%`;
+  shape.style.top = `${pos.y}%`;
+  shape.style.width = `${pos.size}px`;
+  shape.style.height = `${pos.size}px`;
 
   container.appendChild(shape);
-}
+});
